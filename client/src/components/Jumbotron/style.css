@@ -1,0 +1,10 @@
+.jumbotron{
+    background-image: url("./blur-book-stack-books-bookshelves-590493.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px; 
+    width: 100%;
+    padding-top: 10; 
+    text-align: center
+}
