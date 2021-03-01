@@ -34,21 +34,25 @@ class SearchBooks extends Component {
                 else {
                     // store response in a array
                     let results = res.data.items
-                    console.log("Results - ",results)
+                    console.log("Results - ",res.data.items)
                     //map through the array 
                     results = results.map(result => {
+                        //Test to see if imageLink exists.  If not, then create a no cover thumbnail. 
+                        if (typeof result.volumeInfo.imageLinks == "undefined") {
+                            result.volumeInfo.imageLinks = {thumbnail: "https://books.google.com/googlebooks/images/no_cover_thumb.gif"};
+                        } 
+
                         //store each book information in a new object 
                         result = {
                             key: result.id,
                             id: result.id,
                             title: result.volumeInfo.title,
                             authors: result.volumeInfo.authors,
-                            // author: result.volumeInfo.authors.join(),   //Could not find Madison County when I had this in.
                             description: result.volumeInfo.description,
                             image: result.volumeInfo.imageLinks.thumbnail,
                             link: result.volumeInfo.infoLink
                         }
-                        console.log("This is result - ", result)
+                        // console.log("This is result - ", result)
                         return result;
                     })
                     // set the state of the books array to the new arrays of objects with properties getting back from the response
