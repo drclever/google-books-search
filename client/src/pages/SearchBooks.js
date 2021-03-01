@@ -42,7 +42,7 @@ class SearchBooks extends Component {
                             key: result.id,
                             id: result.id,
                             title: result.volumeInfo.title,
-                            author: result.volumeInfo.authors,
+                            authors: result.volumeInfo.authors,
                             // author: result.volumeInfo.authors.join(),   //Could not find Madison County when I had this in.
                             description: result.volumeInfo.description,
                             image: result.volumeInfo.imageLinks.thumbnail,
