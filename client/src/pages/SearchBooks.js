@@ -43,6 +43,7 @@ class SearchBooks extends Component {
                             id: result.id,
                             title: result.volumeInfo.title,
                             author: result.volumeInfo.authors,
+                            // author: result.volumeInfo.authors.join(),   //Could not find Madison County when I had this in.
                             description: result.volumeInfo.description,
                             image: result.volumeInfo.imageLinks.thumbnail,
                             link: result.volumeInfo.infoLink
@@ -69,9 +70,9 @@ class SearchBooks extends Component {
     handleSavedButton = event => {
         // console.log(event)
         event.preventDefault();
-        console.log(this.state.books)
         let savedBooks = this.state.books.filter(book => book.id === event.target.id)
         savedBooks = savedBooks[0];
+        console.log("handleSavedButton - ",savedBooks)
         API.saveBook(savedBooks)
             .then(this.setState({ message: alert("Book saved") }))
             .catch(err => console.log(err))
