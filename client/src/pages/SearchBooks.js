@@ -24,8 +24,7 @@ class SearchBooks extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         // once it clicks it connects to the google book api with the search value
-        console.log("Searchbooks.js -",this.state.search,"-")
-        API.getSearch(this.state.search)
+       API.getSearch(this.state.search)
             .then(res => {
                 if (res.data.items === "error") {
                     console.log("Error from getSearch")
@@ -34,7 +33,6 @@ class SearchBooks extends Component {
                 else {
                     // store response in a array
                     let results = res.data.items
-                    console.log("Results - ",res.data.items)
                     //map through the array 
                     results = results.map(result => {
                         //Test to see if imageLink exists.  If not, then create a no cover thumbnail. 
@@ -52,17 +50,16 @@ class SearchBooks extends Component {
                             image: result.volumeInfo.imageLinks.thumbnail,
                             link: result.volumeInfo.infoLink
                         }
-                        // console.log("This is result - ", result)
+
                         return result;
                     })
                     // set the state of the books array to the new arrays of objects with properties getting back from the response
-                    console.log("This is the books results", results)
+
                     this.setState({ books: results, error: "" })
-                    console.log("This is the this.state.books results", this.state.books)
+
                 }
             })
             .catch(err => {
-                console.log("Error Will Robinson")
                 alert("No Books Found, Try a Different Query")
                 this.setState({ 
                     books: [],
@@ -72,11 +69,9 @@ class SearchBooks extends Component {
     }
 
     handleSavedButton = event => {
-        // console.log(event)
         event.preventDefault();
         let savedBooks = this.state.books.filter(book => book.id === event.target.id)
         savedBooks = savedBooks[0];
-        console.log("handleSavedButton - ",savedBooks)
         API.saveBook(savedBooks)
             .then(this.setState({ message: alert("Book saved") }))
             .catch(err => console.log(err))
@@ -87,7 +82,7 @@ class SearchBooks extends Component {
                 <Jumbotron>
                     <h1 className="text-white">Google Book Search</h1>
                     <br></br>
-                    <h2 className="text-white">Search for Books and save them</h2>
+                    <h2 className="text-white">Search for Books and Save Them</h2>
                 </Jumbotron>
                 <Container>
                     <Row>
