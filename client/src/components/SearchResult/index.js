@@ -20,6 +20,17 @@ const SearchResult = props => {
                         {props.books.map(book => {
                             return (
                                 <li className="search-list list-group-item">
+                                                                        <Row className="buttonDiv ">
+                                    <a href={book.link} target="_blank" rel="noopener noreferrer">
+                                        <button className="viewBook btn btn-success">
+                                            Preview
+                                        </button>
+                                    </a>
+                                    <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
+                                        Save
+                                    </button>
+                                    </Row>
+                                    <br></br>
                                     <Row className="SearchResult row" id={book.title + "Card"} key={book._id}>
                                         {/* col-3 show image of the book */}
                                         <Col size="2" className="bookImage">
@@ -39,17 +50,8 @@ const SearchResult = props => {
                                             </Row>
                                         </Col>
                                     </Row>
-                                    <br></br>
-                                    <Row className="buttonDiv ">
-                                        <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
-                                            Save Book
-                                        </button>
-                                        <a href={book.link} target="_blank" rel="noopener noreferrer">
-                                            <button className="viewBook btn btn-success">
-                                                View Book
-                                        </button>
-                                        </a>
-                                    </Row>
+
+
                                 </li>
                             );
                         })}
