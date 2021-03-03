@@ -20,14 +20,17 @@ const SearchResult = props => {
                             return (
                                 <li className="search-list list-group-item">
                                     <Row className="buttonDiv ">
-                                        <a href={book.link} target="_blank" rel="noopener noreferrer">
-                                            <button className="viewBook btn btn-success">
-                                                Preview
+                                        <Col size="9" className="emptyCol"/>
+                                        <Col size="3">
+                                            <a href={book.link} target="_blank" rel="noopener noreferrer">
+                                                <button className="viewBook btn btn-success">
+                                                    Preview
+                                                </button>
+                                            </a>
+                                            <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
+                                                Save
                                             </button>
-                                        </a>
-                                        <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
-                                            Save
-                                        </button>
+                                        </Col>
                                     </Row>
                                     <br></br>
                                     <Row className="SearchResult row" id={book.title + "Card"} key={book._id}>
