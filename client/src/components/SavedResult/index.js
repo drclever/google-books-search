@@ -21,14 +21,17 @@ const SavedResult = props => {
                         return (
                             <li className="saved-list list-group-item">
                                 <Row className="buttonDiv ">
-                                    <button className="deleteBook btn btn-danger" id={savedbook._id} onClick={() => props.handleDeleteButton(savedbook._id)}>
-                                        Delete
-                                    </button>
-                                    <a href={savedbook.link} target="_blank" rel="noopener noreferrer">
+                                    <Col size="9" className="emptyCol"/>
+                                    <Col size="3">
+                                        <a href={savedbook.link} target="_blank" rel="noopener noreferrer">
                                         <button className="viewBook btn btn-success">
                                             Preview
                                         </button>
-                                    </a>
+                                        </a>
+                                        <button className="deleteBook btn btn-danger" id={savedbook._id} onClick={() => props.handleDeleteButton(savedbook._id)}>
+                                            Delete
+                                        </button>
+                                    </Col>
                                 </Row>
                                 <br></br>
                                 <Row className="SearchResult" id={savedbook.title + "Card"} key={savedbook._id}>
